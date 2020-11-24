@@ -17,7 +17,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     /* add class 'active' to the clicked link */
   
     /* remove class 'active' from all articles */
-    const activeArticles = document.querySelectorAll('.Article .active');
+    const activeArticles = document.querySelectorAll('.posts .active');
 
     for(let activeArticle of activeArticles){
         activeArticle.classList.remove('active');

@@ -58,6 +58,12 @@ for(let link of links){
 
   /* remove contents of titleList */
 
+  const titleList = document.querySelector(optTitleListSelector);
+
+  function clearMessages(){
+    document.getElementById('messages').innerHTML = 'titleList';
+  }
+
   /* for each article */
 
     /* get the article id */

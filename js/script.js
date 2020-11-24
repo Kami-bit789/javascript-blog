@@ -4,7 +4,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     console.log('links:', links);
   });
   */
- const titleClickHandler = function(event){
+const titleClickHandler = function(event){
     event.preventDefault();
     const clickedElement = this;
     console.log('Link was clicked!');
@@ -37,10 +37,12 @@ document.getElementById('test-button').addEventListener('click', function(){
 
 
     /* add class 'active' to the correct article */
-  }
+
+    /*targetArticle.classList.add('active');*/
+}
   
-  const links = document.querySelectorAll('.titles a');
-  
-  for(let link of links){
-    link.addEventListener('click', titleClickHandler);
-  }
+    const links = document.querySelectorAll('.titles a');
+    
+    for(let link of links){
+        link.addEventListener('click', titleClickHandler);
+    }

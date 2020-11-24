@@ -33,7 +33,7 @@ document.getElementById('test-button').addEventListener('click', function(){
     
     /* [IN PROGRESS] find the correct article using the selector (value of 'href' attribute) */
   
-    
+    const targetArticle = document.querySelector('.article .href');
 
 
     /* add class 'active' to the correct article */

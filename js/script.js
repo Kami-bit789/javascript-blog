@@ -56,29 +56,35 @@ for(let link of links){
   function generateTitleLinks(){
   console.log('Links have been generated');
 
-  /* remove contents of titleList */
+    /* remove contents of titleList */
 
-  const titleList = document.querySelector(optTitleListSelector);
+    const titleList = document.querySelector(optTitleListSelector);
 
-  function clearMessages(){
-    document.getElementById('messages').innerHTML = 'titleList';
+    function clearMessages(){
+      document.getElementById('messages').innerHTML = titleList;
+    }
+
+    /* for each article */
+    
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    for(let article of articles){
+      article.addEventListener('click', generateTitleLinks);
   }
+      /* get the article id */
 
-  /* for each article */
+    const articleId = clickedElement.getAttribute('id');
 
-    /* get the article id */
+      /* find the title element */
 
-    /* find the title element */
+      /* get the title from the title element */
 
-    /* get the title from the title element */
+      /* create HTML of the link */
 
-    /* create HTML of the link */
-
-    /* insert link into titleList */
+      /* insert link into titleList */
 
   }
 
 generateTitleLinks();
 
-  
 }

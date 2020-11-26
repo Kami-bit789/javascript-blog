@@ -60,20 +60,17 @@ for(let link of links){
 
     const titleList = document.querySelector(optTitleListSelector);
 
-    function clearMessages(){
-      document.getElementById('messages').innerHTML = titleList;
+    /*function clearMessages(){
+      document.getElementById('messages').innerHTML = titleList;*/
+      titleList.innerHTML = '';
     }
 
     /* for each article */
     
-    const articles = document.querySelectorAll(optArticleSelector);
-
-    for(let article of articles){
-      article.addEventListener('click', generateTitleLinks);
-  }
+    
+  
       /* get the article id */
 
-    const articleId = clickedElement.getAttribute('id');
 
       /* find the title element */
 

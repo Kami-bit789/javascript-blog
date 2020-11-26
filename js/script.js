@@ -59,11 +59,8 @@ for(let link of links){
     /* remove contents of titleList */
 
     const titleList = document.querySelector(optTitleListSelector);
-
-    /*function clearMessages(){
-      document.getElementById('messages').innerHTML = titleList;*/
       titleList.innerHTML = '';
-    }
+    
 
     /* for each article */
     
@@ -79,9 +76,9 @@ for(let link of links){
       /* create HTML of the link */
 
       /* insert link into titleList */
-
+    }
   }
 
 generateTitleLinks();
 
-}
+

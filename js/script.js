@@ -59,25 +59,38 @@ for(let link of links){
     /* remove contents of titleList */
 
     const titleList = document.querySelector(optTitleListSelector);
-      titleList.innerHTML = '';
+    titleList.innerHTML = '';
+    /* find all the articles and save them to variable: articles */
+
+    let html = '';
+
+    for(let article of articles){
     
-
-    /* for each article */
-    
-    
-  
-      /* get the article id */
-
-
-      /* find the title element */
-
-      /* get the title from the title element */
-
-      /* create HTML of the link */
-
-      /* insert link into titleList */
+    const articles = article.querySelectorAll(optArticleSelector);
+    for (let article of articles){
+      link.addEventListener('click', generateTitleLinks);
     }
+    
+    /* get the article id */
+
+    const articleId = article.getAttribute('id');
+
+    /* find the title element */
+
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+    /* get the title from the title element */
+
+    
+    /* create HTML of the link */
+    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    console.log ('link do atykułu + tytuł artykułu');
+    /* insert link into html variable */
+    html = html + linkHTML;
   }
+
+  titleList.innerHTML = html;
+}
 
 generateTitleLinks();
 

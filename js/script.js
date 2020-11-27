@@ -53,45 +53,41 @@ for(let link of links){
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
 
-  function generateTitleLinks(){
-  console.log('Links have been generated');
+    function generateTitleLinks(){
+      console.log('Links have been generated');
 
-    /* remove contents of titleList */
+      /* remove contents of titleList */
 
-    const titleList = document.querySelector(optTitleListSelector);
-    titleList.innerHTML = '';
-    /* find all the articles and save them to variable: articles */
+      const titleList = document.querySelector(optTitleListSelector);
+      titleList.innerHTML = '';
+      /* find all the articles and save them to variable: articles */
 
-    let html = '';
-
-    for(let article of articles){
+      let html = '';
     
-    const articles = article.querySelectorAll(optArticleSelector);
-    for (let article of articles){
-      link.addEventListener('click', generateTitleLinks);
+      const articles = document.querySelectorAll(optArticleSelector);
+      for (let article of articles){
+      article.addEventListener('click', generateTitleLinks);
+      }
+    
+      /* get the article id */
+
+      const articleId = clickedElement.getAttribute('id');
+
+      /* find the title element */
+
+      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+      /* get the title from the title element */
+
+      
+      /* create HTML of the link */
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      console.log ('link do atykułu + tytuł artykułu');
+      /* insert link into html variable */
+      html = html + linkHTML;
+   
+      titleList.innerHTML = html;
+   
+    generateTitleLinks();
     }
-    
-    /* get the article id */
-
-    const articleId = article.getAttribute('id');
-
-    /* find the title element */
-
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-
-    /* get the title from the title element */
-
-    
-    /* create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log ('link do atykułu + tytuł artykułu');
-    /* insert link into html variable */
-    html = html + linkHTML;
-  }
-
-  titleList.innerHTML = html;
 }
-
-generateTitleLinks();
-
-

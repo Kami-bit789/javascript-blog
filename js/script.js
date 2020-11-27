@@ -1,3 +1,4 @@
+{
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
@@ -35,8 +36,6 @@ const titleClickHandler = function (event) {
 
   targetArticle.classList.add('active');
 }
-
-{
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';

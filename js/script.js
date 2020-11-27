@@ -58,7 +58,7 @@ for(let link of links){
 
       /* remove contents of titleList */
 
-      const titleList = document.querySelector(optTitleListSelector);
+      const titleList = article.querySelector(optTitleListSelector);
       titleList.innerHTML = '';
       /* find all the articles and save them to variable: articles */
 

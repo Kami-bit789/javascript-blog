@@ -41,13 +41,6 @@ const titleClickHandler = function(event){
 
     targetArticle.classList.add('active');
 }
-  
-const links = document.querySelectorAll('.titles a');
-console.log('Links to titles have been found');
-
-for(let link of links){
-    link.addEventListener('click', titleClickHandler);
-}
 
 { 
   const optArticleSelector = '.post',
@@ -81,13 +74,14 @@ for(let link of links){
         console.log ('link do atykułu + tytuł artykułu');
         /* insert link into html variable */
         html = html + linkHTML;
-        
-        const links = document.querySelector(titleClickHandler);
-          for (let link of links){
-          link.addEventListener('click', generateTitleLinks); 
-          }
         }
         titleList.innerHTML = html;
-    }
+        
+        const links = document.querySelectorAll('.titles a');
+        for(let link of links){
+        link.addEventListener('click', titleClickHandler);
+        }
+      }
+    
     generateTitleLinks();
 }

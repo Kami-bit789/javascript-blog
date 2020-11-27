@@ -53,7 +53,7 @@ const titleClickHandler = function (event) {
     let html = '';
 
     for (let article of articles) {
-      article.addEventListener('click', generateTitleLinks);
+    article.addEventListener('click', generateTitleLinks);
 
       /* [DONE] get the article id */
 
@@ -81,15 +81,16 @@ const titleClickHandler = function (event) {
 
 function generateTags(){
   /* find all articles */
-
+  const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
-
+  for (let article of articles) {
+    article.addEventListener('click', generateTitleLinks);
     /* find tags wrapper */
-
+    article.querySelector(optTagsListSelector);
     /* make html variable with empty string */
-
+    let html = '';
     /* get tags from data-tags attribute */
-
+    const articleTags = '.article .data-tags';
     /* split tags into array */
 
     /* START LOOP: for each tag */

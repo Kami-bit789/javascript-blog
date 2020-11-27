@@ -92,12 +92,14 @@ function generateTags(){
     /* get tags from data-tags attribute */
     const articleTags = '.article .data-tags';
     /* split tags into array */
-
+    const articleTagsArray = articleTags.split(' ');
     /* START LOOP: for each tag */
-
+      for(let tag of articleTagsArray){
       /* generate HTML of the link */
-
-      /* add generated code to html variable */
+    
+      /* add generated code to HTML variable */
+      
+      }
 
     /* END LOOP: for each tag */
 

@@ -1,4 +1,3 @@
-{
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
@@ -78,7 +77,7 @@ const titleClickHandler = function (event) {
   generateTitleLinks();
 }
 
-const generateTags = function(){
+function generateTags(){
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
@@ -106,6 +105,5 @@ const generateTags = function(){
 
     /* END LOOP: for every article: */
   }
-
-
+}
 generateTags();

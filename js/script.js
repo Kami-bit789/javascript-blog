@@ -38,7 +38,7 @@ const titleClickHandler = function (event) {
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagselector = '.post-tags .list',
+  optArticleTagSelector = '.post-tags .list',
   optTagsListSelector = '.post-tags .list',
   optArticleAuthorSelector = '.data-author';
   
@@ -166,7 +166,7 @@ function generateAuthors() {
     /* make html variable with empty string */
     let html = '';
     /* generate HTML of the link */
-     const linkHTML = '<p><a href=".post-author"><span>'by' + 'data-author'</span></p>';
+     const linkHTML = '<p><a href="data-author"></a></p>';
     /* add generated code to HTML variable */
     html = html + linkHTML;  
     /* END LOOP: for every article: */
@@ -189,7 +189,7 @@ function authorClickHandler(event){
   /* START LOOP: for each active author link */
   for (let activeAuthorLink of authorLinks){
     /* remove class active */
-    activeAuthorLinks.classList.remove('active');
+    activeAuthorLink.classList.remove('active');
   /* END LOOP: for each active author link */
   }
   /* find all author links with "href" attribute equal to the "href" constant */

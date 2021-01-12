@@ -142,7 +142,7 @@ function tagClickHandler(event){
 
   generateTitleLinks();
 }
-
+tagClickHandler();
 
 function addClickListenersToTags(){
   /* find all links to tags */
@@ -162,7 +162,7 @@ function generateAuthors() {
   /* START LOOP: for every article: */
   for (let article of articles) {
      /* get authors from data-author attribute */
-    const articlesAuthors = article.querySelector(optArticleAuthorSelector);
+    const articleAuthor = article.querySelector(optArticleAuthorSelector);
     /* make html variable with empty string */
     let html = '';
     /* generate HTML of the link */
@@ -170,7 +170,7 @@ function generateAuthors() {
     /* add generated code to HTML variable */
     html = html + linkHTML;  
     /* END LOOP: for every article: */
-    articlesAuthors.innerHTML = html;
+    articleAuthor.innerHTML = html;
   }
 }
 generateAuthors();

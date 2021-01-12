@@ -110,7 +110,7 @@ function generateTags(){
 }
 generateTags();
 
-function tagClickHandler(event){
+const tagClickHandler = function (event){
   /* prevent default action for this event */
   event.preventDefault();
   /* make new constant named "clickedElement" and give it the value of "this" */
@@ -142,7 +142,7 @@ function tagClickHandler(event){
 
   generateTitleLinks();
 }
-tagClickHandler();
+
 
 function addClickListenersToTags(){
   /* find all links to tags */
@@ -205,7 +205,7 @@ function authorClickHandler(event){
 
   generateTitleLinks();
 }
-
+authorClickHandler();
 function addClickListenersToAuthors() {
   /* find all links to authors */
   const authorLinks = document.querySelectorAll('a[href^="data-author"]')

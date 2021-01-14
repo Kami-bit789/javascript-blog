@@ -30,7 +30,6 @@ const titleClickHandler = function (event) {
 
   const targetArticle = document.querySelector(articleSelector);
 
-
   /* [DONE] add class 'active' to the correct article */
 
   targetArticle.classList.add('active');
@@ -39,8 +38,8 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagSelector = '.post-tags .list',
-  optTagsListSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.data-author';
+  optArticleAuthorSelector = '.post-author',
+  optTagsListSelector = '.tags .list';
   
 function generateTitleLinks(customSelector = ''){
   console.log('Links have been generated');
@@ -78,14 +77,13 @@ function generateTitleLinks(customSelector = ''){
 }
 
 
-
 function generateTags(){
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
   for (let article of articles) {
     /* find tags wrapper */
-    const articleTagsList = article.querySelector(optTagsListSelector);
+    const articleTagsList = article.querySelector(optArticleTagSelector);
     /* make html variable with empty string */
     let html = '';
     /* get tags from data-tags attribute */
@@ -126,7 +124,6 @@ const tagClickHandler = function (event){
     /* remove class active */
     activeTagLink.classList.remove('active');
   /* END LOOP: for each active tag link */
-    
   } 
   /* find all tag links with "href" attribute equal to the "href" constant */
   const tagLinkHref = document.querySelectorAll('a[href="' + href + '"]');
@@ -142,7 +139,6 @@ const tagClickHandler = function (event){
 
   generateTitleLinks();
 }
-
 
 function addClickListenersToTags(){
   /* find all links to tags */
@@ -205,7 +201,7 @@ function authorClickHandler(event){
 
   generateTitleLinks();
 }
-authorClickHandler();
+
 function addClickListenersToAuthors() {
   /* find all links to authors */
   const authorLinks = document.querySelectorAll('a[href^="data-author"]')
@@ -217,3 +213,4 @@ function addClickListenersToAuthors() {
   }
 }
 addClickListenersToAuthors();
+

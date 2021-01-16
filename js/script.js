@@ -105,7 +105,7 @@ function calculateTagClass(count, params){
 
 function generateTags(){
   /* [NEW] create a new variable allTags with an empty object */
-  let allTags = [];
+  let allTags = {};
   const tagList = document.querySelector('.tags');
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -116,7 +116,7 @@ function generateTags(){
     /* make html variable with empty string */
     let html = '';
     /* get tags from data-tags attribute */
-    const articleTags = articleTagsList.getAttribute('data-tags');
+    const articleTags = article.getAttribute('data-tags');
     /* split tags into array */
     const articleTagsArray = articleTags.split(' ');
     console.log('articleTagsArray', articleTagsArray);
@@ -129,34 +129,29 @@ function generateTags(){
     }
     /* [NEW] check if this link is NOT already in allTags */
     if(!allTags[tag]){
-      /* [NEW] add generated code to allTags array */
+      /* [NEW] add tag to allTags object */
       allTags[tag] = 1;
     } else {
       allTags[tag]++;
     }
      
-    /* [NEW]create variable for all links HTML code */
-    let allTagsHTML = '';
-    /* [NEW] START LOOP: for each tag in allTags: */
-    for (let tag in allTags){
-      /* [NEW] generate code of a link and add it to allTagsHTML */
-      allTagsHTML += '<li><a href="#tag-' + tag + ' (' + allTags[tag] + ')"></a></li>';
-
-        
-      /*[NEW] END LOOP: for each tag in allTags: */
-    }
-    /* [NEW] add HTML from allTagsHTML to tagList */
-    tagList.innerHTML = allTagsHTML;
     
     
     /* insert HTML of all the links into the tags wrapper */
     articleTags.innerHTML = html;
     /* END LOOP: for every article: */
   }
-  /* [NEW] find list of tags in right column */
+  /* [NEW] create variable for all links HTML code */
+  let allTagsHTML = '';
 
-  /* [NEW] add html from allTags to tagList */
-  tagList.innerHTML = allTags.join(' ');
+  /* [NEW] START LOOP: for each tag in allTags: */
+  for(let tag in allTags){
+  /* [NEW] generate code of a link and add it to allTagsHTML */
+    allTagsHTML += '<li><a href="#tag-' + tag + ' (' + allTags[tag] + ')"></a></li>';
+  /* [NEW] END LOOP: for each tag in allTags: */
+  }
+  /*[NEW] add HTML from allTagsHTML to tagList */
+  tagList.innerHTML = allTagsHTML;
 }
 generateTags();
 

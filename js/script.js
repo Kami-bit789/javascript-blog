@@ -81,6 +81,8 @@ function generateTitleLinks(customSelector = ''){
 generateTitleLinks();
 
 function generateTags(){
+  /* [NEW] create a new variable allTags with an empty array */
+  let allTags = [];
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
@@ -99,12 +101,22 @@ function generateTags(){
       const tagLinkHTML = '<li><a href="#tag- ' + tag + '"><span>' + tag + '</span></a></li>';
       /* add generated code to html variable */
       html = html + tagLinkHTML;
+      /* [NEW] check if this link is NOT already in allTags */
+      if(allTags.indexOf(tagLinkHTML) == -1){
+        /* [NEW] add generated code to allTags array */
+        allTags.push(tagLinkHTML);
+      }
     /* END LOOP: for each tag */
     }
     /* insert HTML of all the links into the tags wrapper */
     tagsList.innerHTML = html;
   /* END LOOP: for every article: */
   }
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.tags');
+
+  /* [NEW] add html from allTags to tagList */
+  tagList.innerHTML = allTags.join(' ');
 }
 generateTags();
 

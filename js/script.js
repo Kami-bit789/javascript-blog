@@ -135,7 +135,7 @@ function tagClickHandler(event){
   }
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-tags~="' + tag + '"]');
-  generateTitleLinks();
+  
 }
 
 function addClickListenersToTags(){
@@ -183,7 +183,9 @@ function addClickListenersToAuthors(){
 addClickListenersToAuthors();
   
   
-function authorClickHandler(){
+function authorClickHandler(event){
+  /* prevent default action for this event */
+  event.preventDefault();
   /* make new constant named "clickedElement" and give it the value of "this" */
   const clickedElement = this;
   /* make a new constant "href" and read the attribute "href" of the clicked element */
@@ -209,6 +211,7 @@ function authorClickHandler(){
   /* execute function "generateTitleLinks" with article selector as argument */
 
   generateTitleLinks('[data-author="' + author + '"]');
-  generateTitleLinks();
+  
 }
+
 authorClickHandler();

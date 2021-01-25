@@ -38,12 +38,13 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author';
-  /* optTagsListSelector = '.tags .list',
-  optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-';*/
+  optArticleAuthorSelector = '.post-author',
   
-function generateTitleLinks(customSelector = ''){
+  optCloudClassCount = '5',
+  optCloudClassPrefix = 'tag-size-',
+  
+  
+  function generateTitleLinks(customSelector = ''){
   console.log('Links have been generated');
 
   /* [DONE] remove contents of titleList */
@@ -80,7 +81,7 @@ function generateTitleLinks(customSelector = ''){
 
 generateTitleLinks();
 
-/*function calculateTagsParams (tags){
+function calculateTagsParams (tags){
   const params = {max:0, min:999999};
   for(let tag in tags){
     console.log(tag + ' is used ' + tags[tag] + ' times');
@@ -91,13 +92,15 @@ generateTitleLinks();
 
   return params;
 }
-
+calculateTagsParams();
 function calculateTagClass (count, params){
+  const classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * optCloudClassCount + 1 );
+  const optCloudClassPrefix =+ classNumber;
+}
 
-}*/
 function generateTags(){
-  // /* [NEW] create a new variable allTags with an empty object */
-  // let allTags = {};
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
   
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -114,41 +117,43 @@ function generateTags(){
     /* START LOOP: for each tag */
     for(let tag of articleTagsArray){
     /* generate HTML of the link */
-      const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li> ';
+      const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParam) + '</li>';
+      const tagsParam = {max:0, min:999999};
       console.log('tagLinkHTML:', tagLinkHTML);
       /* add generated code to html variable */
       html = html + tagLinkHTML;
-      // /* [NEW] check if this link is NOT already in allTags */
-      // if(!allTags[tag]) {
-      //   /* [NEW] add tag to allTags object */
-      //   allTags[tag] = 1;
-      // } else {
-      // //   allTags[tag]++;
-      // }
+      /* [NEW] check if this link is NOT already in allTags */
+      if(!allTags[tag]) {
+        /* [NEW] add tag to allTags object */
+        allTags[tag] = 1;
+      } else {
+      //   allTags[tag]++;
+      }
     /* END LOOP: for each tag */
     }
     /* insert HTML of all the links into the tags wrapper */
     tagsList.innerHTML = html;
   /* END LOOP: for every article: */
   }
-  // /* [NEW] find list of tags in right column */
-  // const tagList = document.querySelector('.tags');
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.tags');
 
-  // const tagsParams = calculateTagsParams(allTags);
-  // console.log('tagsParams:', tagsParams)
-  // /* [NEW] create variable for all links HTML code */
-  // let allTagsHTML = '';
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
+  /* [NEW] create variable for all links HTML code */
+  let allTagsHTML = '';
 
-  // /* [NEW] START LOOP: for each tag in allTags: */
-  // for(let tag in allTags){
-  //   /* [NEW] generate code of a link and add it to allTagsHTML */
-   
-  //   allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+  /* [NEW] START LOOP: for each tag in allTags: */
+  for(let tag in allTags){
+    /* [NEW] generate code of a link and add it to allTagsHTML */
+    const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParam) + '</li>';
+    const tagsParam = {max:0, min:999999};
+    allTagsHTML += tagLinkHTML;
 
-  // /* [NEW] END LOOP: for each tag in allTags: */
-  // }
-  // /*[NEW] add HTML from allTagsHTML to tagList */
-  // tagList.innerHTML = allTagsHTML;
+  /* [NEW] END LOOP: for each tag in allTags: */
+  }
+  /*[NEW] add HTML from allTagsHTML to tagList */
+  tagList.innerHTML = allTagsHTML;
 }
 generateTags();
 
@@ -279,7 +284,7 @@ function titleCase(string) {
 
 addClickListenersToAuthors();
 
-  
+
 
 
 

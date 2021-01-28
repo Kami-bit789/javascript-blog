@@ -1,4 +1,10 @@
 'use strict';
+
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+};
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
@@ -66,7 +72,8 @@ function generateTitleLinks(customSelector = ''){
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
     /* [DONE] create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTML = templates.articleLink(linkHTMLData);
     console.log('link do atykułu + tytuł artykułu');
     /* [DONE] insert link into html variable */
     html = html + linkHTML;
@@ -114,11 +121,10 @@ function generateTags(){
     /* START LOOP: for each tag */
     for(let tag of dataTags){
     /* generate HTML of the link */
-      const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li> ';
-     
-      console.log('tagLinkHTML:', tagLinkHTML);
+      const linkHTMLData = {id: tagWrapper, title: dataTags};
+      const linkHTML = templates.tagLink(linkHTMLData);
       /* add generated code to html variable */
-      html = html + tagLinkHTML;
+      html = html + linkHTML; 
       /* [NEW] check if this link is NOT already in allTags */
       if(!allTags[tag]) {
         /* [NEW] add tag to allTags object */
@@ -215,7 +221,9 @@ function generateAuthors() {
     const dataAuthorHref = dataAuthor.replace(' ', '-').toLowerCase();
 
     /* generate HTML of the link */
-    const linkHTML = '<a href="#author-' + dataAuthorHref + '">by ' + dataAuthor + '</a>';
+   
+    const linkHTMLData = {id: authorWrapper, title: dataAuthorHref};
+    const linkHTML = templates.articleLink(linkHTMLData);
 
     /* add generated code to html variable */
     html = html + linkHTML;
@@ -231,7 +239,7 @@ function generateAuthors() {
 
     authorWrapper.innerHTML = html;
     /* END LOOP: for every article: */
-}
+  }
   /* [NEW] find list of tags in right column */
   const authorList = document.querySelector('.authors');
 

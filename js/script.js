@@ -4,6 +4,7 @@ const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
   tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
   authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+
 };
 const titleClickHandler = function (event) {
   event.preventDefault();
@@ -51,7 +52,7 @@ const optArticleSelector = '.post',
   optCloudClassPrefix = 'tag-size-';
   
   
-function generateTitleLinks(customSelector = ''){
+const generateTitleLinks = function (customSelector = ''){
   console.log('Links have been generated');
   /* [DONE] remove contents of titleList */
 
@@ -84,7 +85,7 @@ function generateTitleLinks(customSelector = ''){
   for (let link of links) {
     link.addEventListener('click', titleClickHandler);
   }
-}
+};
 
 generateTitleLinks();
 
@@ -145,12 +146,11 @@ function generateTags(){
   console.log('tagsParams:', tagsParams);
   /* [NEW] create variable for all links HTML code */
   let allTagsHTML = '';
-
   /* [NEW] START LOOP: for each tag in allTags: */
   for(let tag in allTags){
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' </li> ';
-
+    allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' </li> ';  
+   
   /* [NEW] END LOOP: for each tag in allTags: */
   }
   /*[NEW] add HTML from allTagsHTML to tagList */
@@ -221,9 +221,9 @@ function generateAuthors() {
     const dataAuthorHref = dataAuthor.replace(' ', '-').toLowerCase();
 
     /* generate HTML of the link */
-   
+  
     const linkHTMLData = {id: authorWrapper, title: dataAuthorHref};
-    const linkHTML = templates.articleLink(linkHTMLData);
+    const linkHTML = templates.authorLink(linkHTMLData);
 
     /* add generated code to html variable */
     html = html + linkHTML;
@@ -240,8 +240,8 @@ function generateAuthors() {
     authorWrapper.innerHTML = html;
     /* END LOOP: for every article: */
   }
-  /* [NEW] find list of tags in right column */
-  const authorList = document.querySelector('.authors');
+  /* [NEW] find list of authors in right column */
+  const authorList = document.querySelector('.post-author');
 
   /* [NEW] create variable for all links HTML code */
   let allAuthorsHTML = '';
